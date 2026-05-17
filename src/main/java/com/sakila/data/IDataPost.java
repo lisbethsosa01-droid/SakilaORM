@@ -1,6 +1,4 @@
-
 package com.sakila.data;
-
 import java.util.List;
 
 /* Interface CRUD genérica

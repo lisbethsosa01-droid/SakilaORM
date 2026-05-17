@@ -1,15 +1,14 @@
 package com.sakila.app;
 import com.sakila.controllers.ActorController;
-import com.sakila.controllers.FilmController;
-import com.sakila.controllers.CustomerController;
-import com.sakila.controllers.RentalController;
 import com.sakila.models.Actor;
-import com.sakila.utils.Menu;
 import com.sakila.reports.CsvExport;
 import com.sakila.reports.JsonExport;
+import com.sakila.reports.Statistics;
+import com.sakila.utils.Menu;
 import java.util.Scanner;
 
-//Clase principal del sistema.
+/* Clase principal del sistema.
+   @author Lisbeth Sosa */
 public class Main {
 
     public static void main(String[] args) {
@@ -22,6 +21,7 @@ public class Main {
         do {
 
             Menu.showMainMenu();
+
             option = sc.nextInt();
             sc.nextLine();
 
@@ -31,23 +31,18 @@ public class Main {
 
                     System.out.println("\n=== INSERTAR ACTOR ===\n");
                     Actor actor = new Actor();
-
                     System.out.print("Nombre: ");
                     actor.setFirstName(sc.nextLine());
-
                     System.out.print("Apellido: ");
                     actor.setLastName(sc.nextLine());
 
-                    boolean inserted = controller.post(actor);
-                    System.out.println();
+                    if (controller.post(actor)) {
 
-                    if (inserted) {
-
-                        System.out.println("Actor insertado correctamente.");
+                        System.out.println("\nActor insertado correctamente.");
 
                     } else {
 
-                        System.out.println("Error al insertar actor.");
+                        System.out.println("\nError al insertar actor.");
                     }
 
                     break;
@@ -58,17 +53,17 @@ public class Main {
                     System.out.print("ID Actor: ");
 
                     int idSearch = sc.nextInt();
+
                     Actor found = controller.get(idSearch);
-                    System.out.println();
 
                     if (found != null) {
 
-                        System.out.println("Actor encontrado:");
+                        System.out.println("\nActor encontrado:");
                         System.out.println(found);
 
                     } else {
 
-                        System.out.println("Actor no encontrado.");
+                        System.out.println("\nActor no encontrado.");
                     }
 
                     break;
@@ -79,25 +74,21 @@ public class Main {
                     System.out.print("ID Actor: ");
                     int idUpdate = sc.nextInt();
                     sc.nextLine();
+
                     Actor updateActor = new Actor();
                     updateActor.setId(idUpdate);
                     System.out.print("Nuevo nombre: ");
-
                     updateActor.setFirstName(sc.nextLine());
                     System.out.print("Nuevo apellido: ");
-
                     updateActor.setLastName(sc.nextLine());
-                    boolean updated = controller.put(updateActor);
 
-                    System.out.println();
+                    if (controller.put(updateActor)) {
 
-                    if (updated) {
-
-                        System.out.println("Actor actualizado correctamente.");
+                        System.out.println("\nActor actualizado correctamente.");
 
                     } else {
 
-                        System.out.println("No se pudo actualizar actor.");
+                        System.out.println("\nNo se pudo actualizar actor.");
                     }
 
                     break;
@@ -106,17 +97,16 @@ public class Main {
 
                     System.out.println("\n=== ELIMINAR ACTOR ===\n");
                     System.out.print("ID Actor: ");
+
                     int idDelete = sc.nextInt();
-                    boolean deleted = controller.delete(idDelete);
-                    System.out.println();
 
-                    if (deleted) {
+                    if (controller.delete(idDelete)) {
 
-                        System.out.println("Actor eliminado correctamente.");
+                        System.out.println("\nActor eliminado correctamente.");
 
                     } else {
 
-                        System.out.println("No se pudo eliminar actor.");
+                        System.out.println("\nNo se pudo eliminar actor.");
                     }
 
                     break;
@@ -131,52 +121,23 @@ public class Main {
                 case 6:
 
                     System.out.println("\n=== ESTADÍSTICAS ===\n");
-                    int totalActors = controller.get().size();
-                    System.out.println("Total actores registrados: " + totalActors);
+                    System.out.println("Total actores: " + Statistics.totalActors());
 
                     break;
 
                 case 7:
 
-                    System.out.println("\n=== EXPORT CSV ===\n");
+                    System.out.println("\n=== EXPORTAR CSV ===\n");
                     CsvExport.exportActors(controller.get());
 
                     break;
 
                 case 8:
 
-                    System.out.println("\n=== EXPORT JSON ===\n");
+                    System.out.println("\n=== EXPORTAR JSON ===\n");
                     JsonExport.exportActors(controller.get());
 
                     break;
-
-                case 9:
-
-                    FilmController filmController = new FilmController();
-
-                    System.out.println("\n=== PELÍCULAS ===\n");
-                    filmController.get().forEach(System.out::println);
-
-                    break;
-
-                case 10:
-
-                    CustomerController customerController = new CustomerController();
-                    System.out.println("\n=== CLIENTES ===\n");
-                    customerController.get().forEach(c -> System.out.println(c.getId() + " "
-                                                    + c.getFirstName() + " "
-                                                    + c.getLastName()));
-
-                    break;
-
-                case 11:
-
-                    RentalController rentalController = new RentalController();
-                    System.out.println("\n=== RENTAS ===\n");
-                    rentalController.get().forEach(System.out::println);
-
-                    break;
-
 
                 case 0:
 

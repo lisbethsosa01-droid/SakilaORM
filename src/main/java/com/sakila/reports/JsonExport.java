@@ -4,11 +4,11 @@ import com.sakila.models.Actor;
 import java.io.FileWriter;
 import java.util.List;
 
-//Exportador JSON.
+/* Exportador JSON
+   Genera archivo JSON con datos de actores */
 public class JsonExport {
 
-    /* Exportar actores a JSON.
-       @param list lista actores */
+    /* Exportar actores a JSON */
     public static void exportActors(List<Actor> list) {
 
         try {
@@ -18,11 +18,11 @@ public class JsonExport {
             FileWriter writer = new FileWriter("actors.json");
             writer.write(json);
             writer.close();
+
             System.out.println("JSON exportado correctamente.");
 
         } catch (Exception e) {
 
-            System.out.println("Error exportando JSON:");
             System.out.println(e.getMessage());
         }
     }

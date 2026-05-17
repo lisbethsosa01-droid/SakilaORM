@@ -1,38 +1,7 @@
-# Sakila ORM CRUD - Java
-
-Proyecto Final INF514 Programación II Java.
-
-## Tecnologías
-
-- Java 17
-- MySQL
-- JDBC
-- Maven
-- Gson
-
-## Funcionalidades
-
-- CRUD Actor
-- CRUD Film
-- CRUD Customer
-- CRUD Rental
-- Export CSV
-- Export JSON
-- Estadísticas
-- ORM manual
-
-## Arquitectura
-
-- MVC
-- Generic CRUD
-- Padre abstracto ORM
-- JDBC Connection
-- Aggregation FK
-
-## Base de Datos
-
-MySQL Sakila Database.
-
-## Autor
-
-Lisbeth Sosa
+echo "# SakilaORM" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/lisbethsosa01-droid/SakilaORM.git
+git push -u origin main

@@ -1,6 +1,7 @@
 package com.sakila.models;
 
-// Modelo Actor
+/* Modelo Actor
+   Representa la entidad actor de la base de datos Sakila */
 public final class Actor extends Entity {
 
     private String firstName;

@@ -1,28 +1,25 @@
 package com.sakila.utils;
-
-/* Clase de validaciones con expresiones regulares.
-   Proyecto Sakila ORM */
+/* Clase de validaciones con expresiones regulares
+   Utilidad general del sistema Sakila ORM */
 public class RegexHelper {
 
-    /* Validar correo electronico.
-       @param email correo a validar
-       @return true si es valido */
+    // Evita instanciación
+    private RegexHelper() {
+    }
+
+    /* Validar email */
     public static boolean isValidEmail(String email) {
 
         return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
     }
 
-    /* Validar telefono.
-       @param phone telefono
-       @return true si es valido */
+    /* Validar teléfono (10 dígitos) */
     public static boolean isValidPhone(String phone) {
 
         return phone.matches("^[0-9]{10}$");
     }
 
-    /* Validar numeros solamente.
-       @param value valor
-       @return true si es numerico */
+    /* Validar números */
     public static boolean isNumeric(String value) {
 
         return value.matches("^[0-9]+$");
