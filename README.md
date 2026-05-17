@@ -1,45 +1,77 @@
 # Sakila ORM CRUD - Java
 
-Proyecto Final INF514 Programación II Java.
+Proyecto Final de INF514 Programación II Java basado en la base de datos Sakila de MySQL.
 
-## Tecnologías
+## Tecnologías Utilizadas
 
 - Java 17
 - MySQL
 - JDBC
 - Maven
 - Gson
-
-Tecnologías:
-- Java
-- JDBC
-- MySQL
-- MVC
-- CRUD
+- Git
 - GitHub
 
 ## Funcionalidades
 
-- CRUD Actor
-- CRUD Film
-- CRUD Customer
-- CRUD Rental
-- Export CSV
-- Export JSON
-- Estadísticas
-- ORM manual
+- CRUD de Actor
+- CRUD de Film
+- CRUD de Customer
+- CRUD de Rental
+- Exportación CSV
+- Exportación JSON
+- Estadísticas y reportes
+- ORM manual utilizando JDBC
 
-## Arquitectura
+## Estructura del Repositorio
+```text
+SakilaORM
+│
+├── src
+│   └── main
+│       └── java
+│           └── com
+│               └── sakila
+│
+├── actors.csv
+├── actors.json
+├── README.md
+├── pom.xml
+└── .gitignore
+```
 
-- MVC
+## Arquitectura del Proyecto
+
+- Arquitectura MVC
 - Generic CRUD
-- Padre abstracto ORM
+- Clase abstracta DataContext
 - JDBC Connection
-- Aggregation FK
+- Aggregation y Composition para Foreign Keys
+
+## Estructura del Proyecto
+
+```text
+com.sakila
+│
+├── app
+├── controllers
+├── data
+├── models
+├── reports
+└── utils
+```
 
 ## Base de Datos
 
-MySQL Sakila Database.
+El proyecto utiliza la base de datos Sakila incluida en MySQL.
+
+## Ejecución
+
+Ejecutar la clase:
+
+```text
+com.sakila.app.Main
+```
 
 ## Autor
 
